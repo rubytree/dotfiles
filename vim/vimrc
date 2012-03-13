@@ -25,6 +25,7 @@ set hlsearch
 set incsearch " ...dynamically as they are typed.
 set ls=2 " alsways show status line
 set encoding=utf8
+set guifont=Monaco\ 11
 
 " you can also toggle through the matches by tab
 set wildmode=list:longest,full
