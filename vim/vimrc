@@ -1,7 +1,6 @@
 set t_Co=256
 set synmaxcol=130
 set colorcolumn=121
-colorscheme mustang
 set list
 set hidden
 set nobackup
@@ -49,6 +48,7 @@ noremap <silent> <leader>l :%s/\s\+$//e<CR>:g/^$/,/./-j<CR>:nohl<CR>``
 
 call pathogen#infect()
 
+colorscheme railscasts2_hack
 " % to bounce from do to end etc.
 runtime! macros/matchit.vim
 
