@@ -67,3 +67,6 @@
 [submodule "vim/bundle/color-mustang"]
 	path = vim/bundle/color-mustang
 	url = https://github.com/cschlueter/vim-mustang.git
+[submodule "vim/bundle/ctrlp"]
+	path = vim/bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim

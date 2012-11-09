@@ -1,12 +1,15 @@
 set t_Co=256
 set synmaxcol=130
 set colorcolumn=121
+set cursorline
+set shell=/bin/sh
 set list
 set hidden
 set nobackup
 set noswapfile
 set number
 set ruler
+set nowrap
 " allow folder specific vimrc files
 set exrc
 set go=ac "wywal menu z obrazkami
@@ -26,6 +29,8 @@ set incsearch " ...dynamically as they are typed.
 set ls=2 " alsways show status line
 set encoding=utf8
 set guifont=Monaco\ 11
+set background=dark
+filetype plugin on
 
 " you can also toggle through the matches by tab
 set wildmode=list:longest,full
@@ -39,17 +44,31 @@ map <C-h> :bnext<CR>
 map <C-l> :bNext<CR>
 map <C-c> :bdelete<CR>
 
+" dealing with tabs
+map <C-N> :tabnew<CR>
+"map <C-H> :tabNext<CR>
+"map <C-L> :tabnext<CR>
+
 " Shortcut to rapidly toggle `set list`
 "nmap <leader>l :set list!<CR>
-noremap <C-t> :CommandT<CR>
+noremap <C-t> :CtrlP<CR>
 noremap <leader>n :NERDTreeToggle<CR>
+noremap <leader>rd irequire 'ruby-debug';debugger<ESC>
 
 " compress empty lines and remove empty spaces at the end of line
 noremap <silent> <leader>l :%s/\s\+$//e<CR>:g/^$/,/./-j<CR>:nohl<CR>``
+inoremap <silent> <leader>s <ESC>:w<CR>
+noremap <silent> <leader>s <ESC>:w<CR>
+      
+nmap <silent> <leader>gs :Gstatus<CR>
+nmap <silent> <leader>gb :Gblame<CR>
+nmap <silent> <leader>sp :set invpaste paste?<CR>
+nmap <silent> <leader>t :TagbarToggle<CR>
 
 call pathogen#infect()
 
-colorscheme railscasts2_hack
+let g:solarized_termcolors=256
+colorscheme solarized
 " % to bounce from do to end etc.
 runtime! macros/matchit.vim
 
@@ -70,3 +89,33 @@ set listchars=tab:▸\ ,eol:¬
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#030303 ctermbg=236
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#020202 ctermbg=232
+
+let g:ctrlp_custom_ignore = 'vendor\|\.sass-cache$'
+"let g:ctrlp_user_command = 'find %s -type f'
+let g:Powerline_symbols = 'fancy'
+
+" vimroom settings 
+let g:vimroom_width = 120
+" custom macros / fuctions
+function! RubyHashNotation()
+  exec ":normal! f=F:xepf=df <CR>"
+endfunction
+nmap <silent> <leader>rh :call RubyHashNotation()<CR>
+
+" git functions
+function! GitCurrentBranch()
+  return system('git branch | grep "*" | sed "s/*//"')
+endfunction
+
+function! GitPushCurrentBranch()
+  let current_branch = GitCurrentBranch()
+  exec ":Git push origin ".current_branch
+endfunction
+nmap <silent> <leader>gk :call GitPushCurrentBranch()<CR>
+
+function! GitPullCurrentBranch()
+  let current_branch = GitCurrentBranch()
+  exec ":Git pull origin ".current_branch
+endfunction
+nmap <silent> <leader>gj :call GitPullCurrentBranch()<CR>
+
