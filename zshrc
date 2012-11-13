@@ -39,7 +39,6 @@ source $ZSH/oh-my-zsh.sh
 export PATH=/usr/texbin:/Users/mateuszbil/.rvm/gems/ruby-1.8.7-p334@edop/bin:/Users/mateuszbil/.rvm/gems/ruby-1.8.7-p334@global/bin:/Users/mateuszbil/.rvm/rubies/ruby-1.8.7-p334/bin:/Users/mateuszbil/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
-source ~/.bash_completion.d/git-completion.bash
 set -o vi
 source ~/.aliases
 export LC_ALL=pl_PL.UTF-8
