@@ -43,3 +43,5 @@ set -o vi
 source ~/.aliases
 export LC_ALL=pl_PL.UTF-8
 export LANG=pl_PL.UTF-8
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
